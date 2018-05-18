@@ -1,6 +1,6 @@
 @async begin
     seq = 1
-    line = 0
+    data = 0
     trial = 1
     # conn = connect(2000)
     sock = UDPSocket()
@@ -12,10 +12,10 @@
         println("\nSending Data... : $seq")
         # while true
         # @async line = read(conn, Int64)
-        @async line = parse(Int64, String(recv(sock)))
+        @async data = parse(Int64, String(recv(sock)))
         # sleep(1.0)
-        if line == seq
-            println("ACK Received... : $line")
+        if data == seq
+            println("ACK Received... : $data")
             sleep(1.0)
             seq += 1
             trial = 1
